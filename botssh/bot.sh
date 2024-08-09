@@ -1,162 +1,80 @@
 #!/bin/bash
-clear
-#install
-cp /media/cybervpn/var.txt /tmp
-cp /root/cybervpn/var.txt /tmp
-rm -rf cybervpn
-apt update && apt upgrade -y
-apt install python3 python3-pip -y
-apt install sqlite3 -y
-cd /media/
-rm -rf cybervpn
-wget https://raw.githubusercontent.com/darxides/zxcmon-/main/botssh/cybervpn.zip
-unzip cybervpn.zip
-cd cybervpn
-rm var.txt
-rm database.db
-pip3 install -r requirements.txt
-pip install pillow
-pip install speedtest-cli
-pip3 install aiohttp
-pip3 install paramiko
-#isi data
-azi=$(cat /root/nsdomain)
+NS=$( cat /etc/xray/dns )
+PUB=$( cat /etc/slowdns/server.pub )
 domain=$(cat /etc/xray/domain)
+#color
+
+cd /etc/systemd/system/
+rm -rf kyt.service
+cd
+grenbo="\e[92;1m"
+NC='\e[0m'
+#install
+cd /usr/bin
+rm -rf kyt
+rm kyt.*
+rm -rf bot
+rm bot.*
+apt update && apt upgrade
+apt install neofetch -y
+apt install python3 python3-pip git
+cd /usr/bin
+wget https://raw.githubusercontent.com/darxides/zxcmon-/main/botssh/bot.zip
+unzip bot.zip
+mv bot/* /usr/bin
+chmod +x /usr/bin/*
+rm -rf bot.zip
 clear
-echo -e ""
-echo -e ""
-echo "INSTALL BOT CREATE SSH via TELEGRAM"
+wget https://raw.githubusercontent.com/darxides/zxcmon-/main/botssh/kyt.zip
+unzip kyt.zip
+pip3 install -r kyt/requirements.txt
+
+#isi data
+echo ""
+echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e " \e[1;97;101m          ADD BOT PANEL          \e[0m"
+echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "${grenbo}Tutorial Creat Bot and ID Telegram${NC}"
+echo -e "${grenbo}[*] Creat Bot and Token Bot : @BotFather${NC}"
+echo -e "${grenbo}[*] Info Id Telegram : @MissRose_bot , perintah /info${NC}"
+echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+read -e -p "[*] Input your Bot Token : " bottoken
 read -e -p "[*] Input Your Id Telegram :" admin
-read -e -p "[*] Input Your bot Telegram :" token
-read -e -p "[*] Input username Telegram :" user
-
-cat > /media/cybervpn/var.txt << END
-ADMIN="$admin"
-BOT_TOKEN="$token"
-DOMAIN="$domain"
-DNS="$azi"
-PUB="7fbd1f8aa0abfe15a7903e837f78aba39cf61d36f183bd604daa2fe4ef3b7b59"
-OWN="$user"
-SALDO="100000"
-END
-
-
-clear
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "\e[44;97;1m            KYZELL VPN STORE          \e[0m"
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e ""
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "\e[44;97;1m     CREATE BOT SUCCESFULLY        \e[0m"
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e ""
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "\e[96;1m Api Token     : $token"
-echo -e "\e[96;1m ID Telegram   : $admin"
-echo -e "\e[96;1m Domain vps    : $domain"
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e ""
-echo -e "\e91;1m Wait in 4 second.....\e[0m"
-sleep 4
+echo -e BOT_TOKEN='"'$bottoken'"' >> /usr/bin/kyt/var.txt
+echo -e ADMIN='"'$admin'"' >> /usr/bin/kyt/var.txt
+echo -e DOMAIN='"'$domain'"' >> /usr/bin/kyt/var.txt
+echo -e PUB='"'$PUB'"' >> /usr/bin/kyt/var.txt
+echo -e HOST='"'$NS'"' >> /usr/bin/kyt/var.txt
+echo -e "#bot# $bottoken $admin" >/etc/bot/.bot.db
 clear
 
-rm -f /usr/bin/nenen
-
-echo -e '#!/bin/bash\ncd /media/\npython3 -m cybervpn' > /usr/bin/nenen
-
-
-chmod 777 /usr/bin/nenen
-
-cat > /etc/systemd/system/cybervpn.service << END
+cat > /etc/systemd/system/kyt.service << END
 [Unit]
-Description=Simple CyberVPN - @CyberVPN
+Description=Simple kyt - @kyt
 After=network.target
 
 [Service]
-WorkingDirectory=/root
-ExecStart=/usr/bin/nenen
+WorkingDirectory=/usr/bin
+ExecStart=/usr/bin/python3 -m kyt
 Restart=always
 
 [Install]
 WantedBy=multi-user.target
-
 END
-systemctl daemon-reload
-systemctl start cybervpn
-systemctl enable cybervpn
 
+systemctl start kyt 
+systemctl enable kyt
+systemctl restart kyt
+cd /root
+rm -rf kyt.sh
+echo "Done"
+echo "Your Data Bot"
+echo -e "==============================="
+echo "Token Bot         : $bottoken"
+echo "Admin          : $admin"
+echo "Domain        : $domain"
+echo -e "==============================="
+echo "Setting done"
 clear
-echo
-echo
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "\e[44;97;1m        DOWNLOAD ASSET BOT         \e[0m"
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e ""
 
-wget -q -O /usr/bin/panelbot "https://raw.githubusercontent.com/darxides/zxcmon-/main/botssh/panelbot.sh" && chmod +x /usr/bin/panelbot
-
-wget -q -O /usr/bin/addnoobz "https://raw.githubusercontent.com/darxides/zxcmon-/main/botssh/addnoobz.sh" && chmod +x /usr/bin/addnoobz
-
-wget -q -O /media/log-install.txt "https://raw.githubusercontent.com/darxides/zxcmon-/main/botssh/log-install.txt"
-
-wget -q -O /usr/bin/add-vless "https://raw.githubusercontent.com/darxides/zxcmon-/main/botssh/add-vless.sh" && chmod +x /usr/bin/add-vless
-
-wget -q -O /usr/bin/addtr "https://raw.githubusercontent.com/darxides/zxcmon-/main/botssh/addtr.sh" && chmod +x /usr/bin/addtr
-
-wget -q -O /usr/bin/addws "https://raw.githubusercontent.com/darxides/zxcmon-/main/botssh/addws.sh" && chmod +x /usr/bin/addws
-
-wget -q -O /usr/bin/addss "https://raw.githubusercontent.com/darxides/zxcmon-/main/botssh/addss.sh" && chmod +x /usr/bin/addss
-
-wget -q -O /usr/bin/cek-ssh "https://raw.githubusercontent.com/darxides/zxcmon-/main/botssh/cek-ssh.sh" && chmod +x /usr/bin/cek-ssh
-
-wget -q -O /usr/bin/cek-ss "https://raw.githubusercontent.com/darxides/zxcmon-/main/botssh/cek-ss.sh" && chmod +x /usr/bin/cek-ss
-
-wget -q -O /usr/bin/cek-tr "https://raw.githubusercontent.com/darxides/zxcmon-/main/botssh/cek-tr.sh" && chmod +x /usr/bin/cek-tr
-
-wget -q -O /usr/bin/cek-vless "https://raw.githubusercontent.com/darxides/zxcmon-/main/botssh/cek-vless.sh" && chmod +x /usr/bin/cek-vless
-
-wget -q -O /usr/bin/cek-ws "https://raw.githubusercontent.com/darxides/zxcmon-/main/botssh/cek-ws.sh" && chmod +x /usr/bin/cek-ws
-
-wget -q -O /usr/bin/del-vless "https://raw.githubusercontent.com/darxides/zxcmon-/main/botssh/del-vless.sh" && chmod +x /usr/bin/del-vless
-
-wget -q -O /usr/bin/cek-noobz "https://raw.githubusercontent.com/darxides/zxcmon-/main/botssh/cek-noobz.sh" && chmod +x /usr/bin/cek-noobz
-
-wget -q -O /usr/bin/deltr "https://raw.githubusercontent.com/darxides/zxcmon-/main/botssh/deltr.sh" && chmod +x /usr/bin/deltr
-
-wget -q -O /usr/bin/delws "https://raw.githubusercontent.com/darxides/zxcmon-/main/botssh/delws.sh" && chmod +x /usr/bin/delws
-
-wget -q -O /usr/bin/delss "https://raw.githubusercontent.com/darxides/zxcmon-/main/botssh/delss.sh" && chmod +x /usr/bin/delss
-
-wget -q -O /usr/bin/renew-ss "https://raw.githubusercontent.com/darxides/zxcmon-/main/botssh/renew-ss.sh" && chmod +x /usr/bin/renew-ss
-
-wget -q -O /usr/bin/renewtr "https://raw.githubusercontent.com/darxides/zxcmon-/main/botssh/renewtr.sh" && chmod +x /usr/bin/renewtr
-
-wget -q -O /usr/bin/renewvless "https://raw.githubusercontent.com/darxides/zxcmon-/main/botssh/renewvless.sh" && chmod +x /usr/bin/renewvless
-
-wget -q -O /usr/bin/renewws "https://raw.githubusercontent.com/darxides/zxcmon-/main/botssh/renewws.sh" && chmod +x /usr/bin/renewws
-
-wget -q -O /usr/bin/cek-mws "https://raw.githubusercontent.com/darxides/zxcmon-/main/botssh/cek-mws.sh" && chmod +x /usr/bin/cek-mws
-
-wget -q -O /usr/bin/cek-mvs "https://raw.githubusercontent.com/darxides/zxcmon-/main/botssh/cek-mvs.sh" && chmod +x /usr/bin/cek-mvs
-
-wget -q -O /usr/bin/cek-mss "https://raw.githubusercontent.com/darxides/zxcmon-/main/botssh/cek-mss.sh" && chmod +x /usr/bin/cek-mss
-
-wget -q -O /usr/bin/cek-mts "https://raw.githubusercontent.com/darxides/zxcmon-/main/botssh/cek-mts.sh" && chmod +x /usr/bin/cek-mts
-
-cp /tmp/var.txt /media/cybervpn
-
-clear
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "\e[44;97;1m          KYZELL VPN STORE             \e[0m"
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e ""
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "\e[44;97;1m       DOWNLOAD SUCCESFULLY        \e[0m"
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e ""
-echo -e "\e[96;1m KETIK /menu : .menu : .crot : .gas DI BOT TELEGRAM ANDA \e[0m"
-echo -e ""
-read -p "Press !! ENTER Back To Menu"
-rm /media/cybervpn.zip
-clear
-menu
+echo " Installations complete, type /menu on your bot"
