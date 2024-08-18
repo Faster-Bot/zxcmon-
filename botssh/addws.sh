@@ -16,7 +16,7 @@ clear
 until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
   clear
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "\e[44;97;1m        HENDRA TUNNELING          \e[0m"
+echo -e "\e[44;97;1m        KYZELL VPN STORE          \e[0m"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e ""
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
@@ -38,7 +38,7 @@ echo -e "${NC}"
   if [[ ${CLIENT_EXISTS} == '1' ]]; then
     clear
 echo -e "${blue}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${putih}${BGX}                     ADD VMESS ACCOUNT                      ${NC}"
+echo -e "${putih}${BGX}             ADD VMESS ACCOUNT                      ${NC}"
 echo -e "${blue}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 echo ""
     echo -e "${putih}   A client with the specified name was already created, please choose another name. ${NC}"
@@ -236,9 +236,9 @@ echo "### ${user} ${exp}" >>/etc/rizkihdyt/ws
 
 clear
 echo -e "${blue}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${putih}${BGX}                SUCCESS CREATE  VMESS                 ${NC}"
+echo -e "${putih}${BGX}               SUCCESS CREATE  VMESS                 ${NC}"
 echo -e "${blue}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "Remarks      : ${user}"
+echo -e "Username     : ${user}"
 echo -e "Domain       : ${domain}"
 echo -e "Host Slowdns : ${NS}"
 echo -e "Pub Key      : ${PUB}"
@@ -271,9 +271,9 @@ echo -e "                    FORMAT OPENCLASH"
 echo -e "${blue}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 echo -e "     https://${domain}:81/vmess-$user.txt"
 echo -e "${blue}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "Aktif Selama   : $masaaktif Hari"
-echo -e "Dibuat Pada    : $tnggl"
-echo -e "Berakhir Pada  : $expe"
+echo -e "Aktif Selama  : $masaaktif Hari"
+echo -e "Dibuat Pada   : $tnggl"
+echo -e "Berakhir Pada : $expe"
 echo -e "${blue}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 echo -e ""
 #echo -e "${putih}"

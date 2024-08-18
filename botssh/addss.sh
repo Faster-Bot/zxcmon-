@@ -16,7 +16,7 @@ clear
 until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
   clear
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "\e[44;97;1m        KYZELL TUNNELING          \e[0m"
+echo -e "\e[44;97;1m       KYZELL VPN STORE          \e[0m"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e ""
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
@@ -34,7 +34,7 @@ echo -e "${NC}"
   if [[ ${CLIENT_EXISTS} == '1' ]]; then
     clear
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "\e[44;97;1m        KYZELL TUNNELING          \e[0m"
+echo -e "\e[44;97;1m        KYZELL VPN STORE         \e[0m"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e ""
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
@@ -91,7 +91,7 @@ clear
 echo -e "${blue}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 echo -e "${putih}${BGX}                SUCCESS CREATE  VMESS                 ${NC}"
 echo -e "${blue}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "Remarks        : ${user}"
+echo -e "Username       : ${user}"
 echo -e "Domain         : ${domain}"
 echo -e "Location       : $CITY"
 echo -e "User Quota     : ${Quota} GB"

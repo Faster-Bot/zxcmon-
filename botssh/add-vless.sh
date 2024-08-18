@@ -11,7 +11,7 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
   echo -e " \e[1;97;101m            ADD VLESS ACCOUNT           \e[0m"
   echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 
-  read -p "User: " user
+  read -p "Username    : " user
   CLIENT_EXISTS=$(grep -w $user /etc/xray/config.json | wc -l)
 
   if [[ ${CLIENT_EXISTS} == '1' ]]; then
@@ -28,7 +28,7 @@ systemctl restart cybervpn
   fi
 done
 uuid=$(cat /proc/sys/kernel/random/uuid)
-read -p "Expired (days): " masaaktif
+read -p "Expired (days) : " masaaktif
 read -p "Limit User (GB): " Quota
 read -p "Limit User (ip): " ip
 
@@ -166,9 +166,9 @@ echo "#& ${user} ${expe}" >>/etc/rizkihdyt/vl
 
 clear
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e " \e[1;97;101m       SUCCES CREAT VLESS ACCOUNT       \e[0m"
+echo -e " \e[1;97;101m       SUCCES CREATE VLESS ACCOUNT       \e[0m"
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "Remarks     : ${user}"
+echo -e "Username    : ${user}"
 echo -e "Domain      : ${domain}"
 echo -e "Location    : $CITY"
 echo -e "User Quota  : ${Quota} GB"
