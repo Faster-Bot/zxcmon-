@@ -1,3 +1,4 @@
+
 #!/bin/bash
 MYIP=$(wget -qO- icanhazip.com);
 apt install jq curl -y
@@ -6,17 +7,17 @@ echo -e ""
 echo -e "\033[96;1m============================\033[0m"
 echo -e "\033[95;1m      INPUT SUBDOMAIN  \033[0m"
 echo -e "\033[96;1m============================\033[0m"
-echo -e "\033[91;1m Note. contoh Subdomain :\033[0m \033[93mbebas112 \033[0m"
+echo -e "\033[91;1m Note. contoh Subdomain :\033[0m \033[93namamu208 \033[0m"
 echo -e " "
 read -p "SUBDOMAIN :  " domen
 echo -e ""
-DOMAIN=inject.cloud
+DOMAIN=jabarvpn.my.id
 sub=${domen}
-dns=${sub}inject.cloud
+dns=${sub}jabarvpn.my.id
 #(</dev/urandom tr -dc a-z0-9 | head -c5)
 dns=${sub}.inject.cloud
-CF_KEY=e03f30d53ad7ec2ab54327baa5e2da5ab44f0
-CF_ID=mezzqueen293@gmail.com
+CF_KEY=f4fa3402134bc7ec0af9e60d84bd81d746733
+CF_ID=zeldha24@gmail.com
 set -euo pipefail
 IP=$(wget -qO- icanhazip.com);
 echo "Updating DNS for ${dns}..."
