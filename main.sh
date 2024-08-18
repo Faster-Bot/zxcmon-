@@ -124,7 +124,7 @@ echo -e "${ERROR} ${REDBG} $1 ${FONT}"
 function print_success() {
 if [[ 0 -eq $? ]]; then
 echo -e "${green} =============================== ${FONT}"
-echo -e "${Green} # $1 berhasil dipasang"
+echo -e "${Green} # $1 BERHASIL DIPASANG"
 echo -e "${green} =============================== ${FONT}"
 sleep 2
 fi
@@ -232,10 +232,10 @@ function pasang_domain() {
 echo -e ""
 clear
 echo -e "    ----------------------------------"
-echo -e "   |\e[1;32mPlease Select a Domain Type Below \e[0m|"
+echo -e "   |\e[1;32mSilahkan Pilih Domain di Bawah Ini \e[0m|"
 echo -e "    ----------------------------------"
-echo -e "     \e[1;32m1)\e[0m Your Domain"
-echo -e "     \e[1;32m2)\e[0m Random Domain "
+echo -e "     \e[1;32m1)\e[0m Domain Kamu "
+echo -e "     \e[1;32m2)\e[0m Domain Random "
 echo -e "   ------------------------------------"
 read -p "   Please select numbers 1-2 or Any Button(Random) : " host
 echo ""
@@ -247,7 +247,7 @@ echo -e "   \e[1;36m_______________________________$NC"
 echo -e "   \e[1;32m      CHANGES DOMAIN $NC"
 echo -e "   \e[1;36m_______________________________$NC"
 echo -e ""
-read -p "   INPUT YOUR DOMAIN :   " host1
+read -p "   MASUKKAN DOMAIN KAMU :   " host1
 echo "IP=" >> /var/lib/kyt/ipvps.conf
 echo $host1 > /etc/xray/domain
 echo $host1 > /root/domain
@@ -274,7 +274,7 @@ TEXT="
 <code>Domain : </code><code>$domain</code>
 <code>Date   : </code><code>$TIME</code>
 <code>Time   : </code><code>$TIMEZONE</code>
-<code>Ip vps : </code><code>$ipsaya</code>
+<code>Ip VPS : </code><code>$ipsaya</code>
 <code>Exp Sc : </code><code>$EXPSC</code>
 <code>────────────────────</code>
 <i>Automatic Notification from Github</i>
@@ -442,7 +442,7 @@ print_success "Password SSH"
 }
 function udp_mini(){
 clear
-print_install "Memasang Service limit Quota"
+print_install "Memasang Service Limit Quota"
 wget raw.githubusercontent.com/darxides/zxcmon-/main/Fls/limit.sh && chmod +x limit.sh && ./limit.sh
 cd
 wget -q -O /usr/bin/limit-ip "${REPO}Fls/limit-ip"
@@ -565,6 +565,7 @@ rm -f /root/vnstat-2.6.tar.gz
 rm -rf /root/vnstat-2.6
 print_success "Vnstat"
 }
+clear
 function ins_openvpn(){
 clear
 print_install "Menginstall OpenVPN"
@@ -572,6 +573,7 @@ wget ${REPO}Fls/openvpn &&  chmod +x openvpn && ./openvpn
 /etc/init.d/openvpn restart
 print_success "OpenVPN"
 }
+clear
 function ins_backup(){
 clear
 print_install "Memasang Backup Server"
@@ -607,7 +609,7 @@ print_success "Backup Server"
 clear
 function ins_swab(){
 clear
-print_install "Memasang Swap 1 G"
+print_install "Memasang Swap 1G"
 gotop_latest="$(curl -s https://api.github.com/repos/xxxserxxx/gotop/releases | grep tag_name | sed -E 's/.*"v(.*)".*/\1/' | head -n 1)"
 gotop_link="https://github.com/xxxserxxx/gotop/releases/download/v$gotop_latest/gotop_v"$gotop_latest"_linux_amd64.deb"
 curl -sL "$gotop_link" -o /tmp/gotop.deb
@@ -624,6 +626,7 @@ chronyc tracking -v
 wget ${REPO}Fls/bbr.sh &&  chmod +x bbr.sh && ./bbr.sh
 print_success "Swap 1 G"
 }
+clear
 function ins_Fail2ban(){
 clear
 print_install "Menginstall Fail2ban"
@@ -639,6 +642,7 @@ sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/banner.txt"@g' /etc/default/d
 wget -O /etc/banner.txt "${REPO}Bnr/issue.net"
 print_success "Fail2ban"
 }
+clear
 function ins_epro(){
 clear
 print_install "Menginstall ePro WebSocket Proxy"
@@ -677,6 +681,7 @@ apt autoclean -y >/dev/null 2>&1
 apt autoremove -y >/dev/null 2>&1
 print_success "ePro WebSocket Proxy"
 }
+clear
 function ins_restart(){
 clear
 print_install "Restarting  All Packet"
@@ -708,6 +713,7 @@ rm -f /root/key.pem
 rm -f /root/cert.pem
 print_success "All Packet"
 }
+clear
 function menu(){
 clear
 print_install "Memasang Menu Packet"
@@ -718,6 +724,7 @@ mv menu/* /usr/local/sbin
 rm -rf menu
 rm -rf menu.zip
 }
+clear
 function profile(){
 clear
 cat >/root/.profile <<EOF
@@ -783,6 +790,7 @@ TIME_DATE="AM"
 fi
 print_success "Menu Packet"
 }
+clear
 function enable_services(){
 clear
 print_install "Enable Service"
@@ -798,6 +806,7 @@ systemctl restart haproxy
 print_success "Enable Service"
 clear
 }
+clear
 function instal(){
 clear
 first_setup
@@ -825,6 +834,7 @@ profile
 enable_services
 restart_system
 }
+clear
 instal
 echo ""
 history -c
@@ -841,8 +851,8 @@ echo -e "\033[96m==========================\033[0m"
 echo -e "\033[92m      INSTALL SUCCES      \033[0m"
 echo -e "\033[96m==========================\033[0m"
 echo -e ""
-echo -e "\033[93;1m Wait inn 4 sec...\033[0m"
-sleep 4
+echo -e "\033[93;1m Wait in 3 sec...\033[0m"
+sleep 3
 clear
 echo ""
 read -p "Press [ Enter ]  TO REBOOT"
