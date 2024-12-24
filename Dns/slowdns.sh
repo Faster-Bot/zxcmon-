@@ -50,10 +50,10 @@ service cron restart
 #konfigurasi slowdns
 rm -rf /etc/slowdns
 mkdir -m 777 /etc/slowdns
-wget -q -O /etc/slowdns/server.key "https://raw.githubusercontent.com/darxides/zxcmon-/main/Dns/server.key"
-wget -q -O /etc/slowdns/server.pub "https://raw.githubusercontent.com/darxides/zxcmon-/main/Dns/server.pub"
-wget -q -O /etc/slowdns/sldns-server "https://raw.githubusercontent.com/darxides/zxcmon-/main/Dns/sldns-server"
-wget -q -O /etc/slowdns/sldns-client "https://raw.githubusercontent.com/darxides/zxcmon-/main/Dns/sldns-client"
+wget -q -O /etc/slowdns/server.key "https://raw.githubusercontent.com/Faster-Bot/zxcmon-/main/Dns/server.key"
+wget -q -O /etc/slowdns/server.pub "https://raw.githubusercontent.com/Faster-Bot/zxcmon-/main/Dns/server.pub"
+wget -q -O /etc/slowdns/sldns-server "https://raw.githubusercontent.com/Faster-Bot/zxcmon-/main/Dns/sldns-server"
+wget -q -O /etc/slowdns/sldns-client "https://raw.githubusercontent.com/Faster-Bot/zxcmon-/main/Dns/sldns-client"
 cd
 chmod +x /etc/slowdns/server.key
 chmod +x /etc/slowdns/server.pub
